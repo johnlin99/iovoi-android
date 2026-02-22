@@ -5,15 +5,18 @@ plugins {
 
 android {
     namespace = "com.iovoi.ime"
-    compileSdk = 34
+    compileSdk = 33  // 降級 compileSdk 避免依賴太新的 build tools
 
     defaultConfig {
         applicationId = "com.iovoi.ime"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
+
+    // 強制指定一個普遍支援的 buildToolsVersion
+    buildToolsVersion = "33.0.1"
 
     buildTypes {
         release {
@@ -31,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.8.0")
 }
