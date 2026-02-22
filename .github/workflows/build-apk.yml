@@ -21,10 +21,12 @@ jobs:
       - name: 🐘 執行 Gradle 編譯
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.2'
+          gradle-version: wrapper
       
-      - name: 🏗️ 開始編譯 iovoi APK
-        run: gradle :app:assembleDebug --no-daemon
+      - name: 🏗️ 賦予執行權限並編譯 iovoi APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
 
       - name: 📦 上傳 APK 檔案
         uses: actions/upload-artifact@v4
