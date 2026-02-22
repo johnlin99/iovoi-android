@@ -18,11 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: 🐘 設定 Gradle
+      - name: 🐘 執行 Gradle 編譯
         uses: gradle/actions/setup-gradle@v3
-
+        with:
+          gradle-version: '8.2'
+      
       - name: 🏗️ 開始編譯 iovoi APK
-        run: gradle assembleDebug --no-daemon
+        run: gradle :app:assembleDebug --no-daemon
 
       - name: 📦 上傳 APK 檔案
         uses: actions/upload-artifact@v4
