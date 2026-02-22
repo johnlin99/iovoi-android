@@ -14,6 +14,10 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    
+    // 🔥 加入這行魔法，這通常是沒有 Android Studio 從零建專案時缺少的！
+    buildToolsVersion = "34.0.0" 
+
     buildTypes {
         release {
             isMinifyEnabled = false
