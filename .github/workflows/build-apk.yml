@@ -18,15 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: 🐘 安裝並執行 Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.2'
-      
+      - name: 🐘 賦予執行權限並強制覆蓋 Gradle 版本
+        run: |
+          chmod +x gradlew
+
       - name: 🏗️ 開始編譯 iovoi APK
         run: |
-          echo "Starting gradle build..."
-          gradle assembleDebug --stacktrace --info
+          ./gradlew assembleDebug --stacktrace --info
 
       - name: 📦 上傳 APK 檔案
         if: always()
