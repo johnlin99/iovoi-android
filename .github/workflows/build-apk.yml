@@ -18,13 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: 🐘 賦予執行權限並強制覆蓋 Gradle 版本
-        run: |
-          chmod +x gradlew
+      - name: 🐘 安裝並執行 Gradle (自動管理 Wrapper)
+        uses: gradle/actions/setup-gradle@v3
+        with:
+           gradle-version: '8.0' # 明確指定我們要的版本
 
       - name: 🏗️ 開始編譯 iovoi APK
-        run: |
-          ./gradlew assembleDebug --stacktrace --info
+        run: gradle assembleDebug --stacktrace --info
 
       - name: 📦 上傳 APK 檔案
         if: always()
